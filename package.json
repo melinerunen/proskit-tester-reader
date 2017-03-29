@@ -1,0 +1,28 @@
+{
+  "name": "proskit-tester-reader",
+  "version": "1.0.0",
+  "description": "App to read pros'kit multester",
+  "main": "proskit-reader.js",
+  "scripts": 
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melinerunen/proskit-tester-reader.git"
+  },
+  "keywords": [
+    "proskit",
+    "multester",
+    "serial"
+  ],
+  "author": "David Cortelezzi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melinerunen/proskit-tester-reader/issues"
+  },
+  "homepage": "https://github.com/melinerunen/proskit-tester-reader#readme",
+  "dependencies": {
+    "node": "0.0.0",
+    "serialport": "^4.0.7"
+  }
+}
