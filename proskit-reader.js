@@ -15,36 +15,45 @@ let data_model = {
 
     "autoRange": {"type": "boolean"},
     "measureType": {"type": "string"},
-    //TODO: Add the rest of the model to d
+    //TODO: Add the rest of the model.
+    //TODO: enum values in units, precision, measuretype.
 };
 
+//TODO: Get port as param
 let port = new SerialPort("/dev/cu.SLAB_USBtoUART", {
     baudRate: 2400,
     dataBits: 8,
     stopBits: 1,
-    // bufferSize: 14,
+    // bufferSize: 8,
     // parser: SerialPort.parsers.raw,
-    parser: SerialPort.parsers.byteLength(14),
+    parser: SerialPort.parsers.byteLength(14,'ascii'),
 });
 
 
 port.on("open", function() {
     console.log("Port is open");
     console.log("Flushing data");
-    port.flush();
+    port.flush(); //sync data
 });
 
 
 port.on("data", function(data) {
 
-    data_model.rawValue = data.slice(0, 5).toString('ascii');
+    if (!port.isOpen()){return};
 
-    console.log(data_model);
+    let value = data.slice(0, 5).toString('ascii');
+
+
+    console.log(data);
+    // console.log(data_model);
     //TODO: Analize the rest of the segments
 
     console.log(data.toString('ascii'));
+
+    //TODO: Return the JSON model with a event fired.
 });
 
+
 port.on("close", function() {
-    console.log("port is closed!!!");
+    console.log("Port is closed!!!");
 });
